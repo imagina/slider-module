@@ -20,8 +20,8 @@ class CreateSlidesTranslationsTable extends Migration {
             $table->integer('slide_id')->unsigned();
             $table->string('locale')->index();
 
-            $table->string('title');
-            $table->string('caption');
+            $table->string('title')->nullable();
+            $table->string('caption')->nullable();
             $table->string('url')->nullable();
             $table->string('uri')->nullable();
             $table->boolean('active')->default(false);

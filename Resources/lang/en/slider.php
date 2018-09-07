@@ -41,5 +41,11 @@ return [
     ],
     'navigation' => [
         'back to index' => 'Go back to the slider index'
-    ]
+    ],
+    'list resource' => 'List Slider',
+    'create resource' => 'Create Slider',
+    'edit resource' => 'Edit Slider',
+    'destroy resource' => 'Delete Slider',
+    'store resource'=>'Store Slider',
+    'update resource'=>'Update Slider'
 ];

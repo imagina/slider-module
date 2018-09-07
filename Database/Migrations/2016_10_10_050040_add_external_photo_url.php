@@ -14,7 +14,7 @@ class AddExternalPhotoUrl extends Migration {
     {
         Schema::table('slider__slides', function(Blueprint $table)
         {
-            $table->string('external_image_url', 255)->default('');
+            $table->text('external_image_url')->default('')->nullable();
         });
     }
 
