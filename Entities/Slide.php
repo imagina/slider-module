@@ -77,7 +77,7 @@ class Slide extends Model
             if (!empty($this->external_image_url)) {
                 $this->imageUrl = $this->external_image_url;
             } elseif (isset($this->files[0]) && !empty($this->files[0]->path)) {
-                $this->imageUrl = $this->files[0]->path;
+                $this->imageUrl = $this->filesByZone('slideImage')->first()->path_string;
             }
         }
 

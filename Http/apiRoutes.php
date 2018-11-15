@@ -16,3 +16,10 @@ $router->group(['prefix' => '/slide'], function (Router $router) {
         'middleware' => 'token-can:slider.slides.destroy'
     ]);
 });
+
+$router->group(['prefix' => '/slider'], function (Router $router) {
+  $router->get('/{id}', [
+    'as' => 'api.slide.show',
+    'uses' => 'SliderApiController@show'
+  ]);
+});

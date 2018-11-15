@@ -3,7 +3,7 @@
   "alias": "slider",
   "description": "Managing sliders",
   "keywords": [],
-  "version": "3.5.0",
+  "version": "3.5.1",
   "active": 1,
   "order": 1,
   "providers": [
