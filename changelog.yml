@@ -1,5 +1,9 @@
 url: https://github.com/becquerel/asgard-slider-module
 versions:
+    "3.5.3":
+        added:
+          - SlideApicontroller ad SliderApiContoller
+          - Repositories Slider Api
     "3.5.2":
         added:
           - SlideApicontroller ad SliderApiContoller
