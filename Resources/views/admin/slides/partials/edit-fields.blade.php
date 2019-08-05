@@ -27,5 +27,5 @@
 @include('media::admin.fields.file-link', [
     'entityClass' => 'Modules\\\\Slider\\\\Entities\\\\Slide',
     'entityId' => $slide->id,
-    'zone' => 'slideImage'
+    'zone' => 'slideimage'
 ])

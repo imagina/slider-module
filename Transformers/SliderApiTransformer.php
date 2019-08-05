@@ -11,10 +11,12 @@ class SliderApiTransformer extends Resource
   {
     return [
       'id' => $this->id,
-      'title' => $this->title,
-      'caption' => $this->caption,
-      'customHtml' => $this->custom_html,
-      'imageUrl' => $this->getImageUrl()
+      'name' => $this->name,
+      'systemName' => $this->system_name,
+      'active' => $this->active == 1 ? true : false,
+      'createdAt' => $this->created_at,
+      'options' => $this->when($this->options, $this->options),
+      'slides' => SlideApiTransformer::collection($this->slides),
     ];
   }
 }

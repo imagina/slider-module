@@ -4,16 +4,7 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 
-$router->group(['prefix' => '/slide'], function (Router $router) {
-  $router->get('/', [
-    'as' => 'api.slide.index',
-    'uses' => 'SlideApiController@index'
-  ]);
-
-  $router->get('/{id}', [
-    'as' => 'api.slide.show',
-    'uses' => 'SlideApiController@show'
-  ]);
+$router->group(['prefix' => '/slider/v1'], function (Router $router) {
 
   $router->post('/update', [
     'as' => 'api.slide.update',
@@ -26,4 +17,10 @@ $router->group(['prefix' => '/slide'], function (Router $router) {
     'uses' => 'SlideController@delete',
     'middleware' => 'token-can:slider.slides.destroy'
   ]);
+  
+  //======  SLIDERS
+  require('ApiRoutes/sliderRoutes.php');
+  
+  //======  SLIDES
+  require('ApiRoutes/slideRoutes.php');
 });

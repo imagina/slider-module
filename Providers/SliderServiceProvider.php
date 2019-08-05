@@ -8,9 +8,10 @@ use Modules\Slider\Presenters\SliderPresenter;
 use Modules\Slider\Repositories\Cache\CacheSliderDecorator;
 use Modules\Slider\Repositories\Cache\CacheSlideDecorator;
 use Modules\Slider\Repositories\Eloquent\EloquentSlideApiRepository;
-use Modules\Slider\Repositories\Eloquent\EloquentSliderRepository;
+use Modules\Slider\Repositories\Eloquent\EloquentSliderApiRepository;
 use Modules\Slider\Repositories\Eloquent\EloquentSlideRepository;
 use Modules\Core\Traits\CanPublishConfiguration;
+use Modules\Slider\Repositories\Eloquent\EloquentSliderRepository;
 
 class SliderServiceProvider extends ServiceProvider
 {
@@ -98,6 +99,20 @@ class SliderServiceProvider extends ServiceProvider
         return new CacheSlideApiDecorator($repository);
       }
     );
+
+      $this->app->bind(
+          'Modules\Slider\Repositories\SliderApiRepository',
+          function () {
+              $repository = new EloquentSliderApiRepository(new Slider());
+
+              if (!config('app.cache')) {
+                  return $repository;
+              }
+
+              return new CacheSliderApiDecorator($repository);
+          }
+      );
+
 
     $this->app->bind('Modules\Slider\Presenters\SliderPresenter');
   }

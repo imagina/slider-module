@@ -16,7 +16,7 @@
     </select>
 </div>
 
-@mediaSingle('slideImage')
+@mediaSingle('slideimage')
 
 <div class="form-group{{ $errors->has("external_image_url") ? ' has-error' : '' }}">
     {!! Form::label("external_image_url", trans('slider::slider.form.external image url')) !!}

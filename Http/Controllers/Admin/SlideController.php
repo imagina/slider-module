@@ -65,7 +65,7 @@ class SlideController extends AdminBaseController
                 'slider' => $slider,
                 'slide' => $slide,
                 'pages' => $pages,
-                'slideImage' => $this->file->findFileByZoneForEntity('slideImage', $slide)
+                'slideimage' => $this->file->findFileByZoneForEntity('slideimage', $slide)
             ]);
     }
 
