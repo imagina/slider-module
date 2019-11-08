@@ -37,9 +37,20 @@ class SlideController extends Controller
      */
     public function update(Request $request)
     {
+      try {
         $this->cache->tags('slides')->flush();
-
-        $this->slideOrderer->handle($request->get('slider'));
+        if ($request->input('attributes')){
+          $data = $request->input('attributes');
+          $this->slideOrderer->handle(json_encode($data['slider']));
+        } else {
+          $this->slideOrderer->handle($request->get('slider'));
+        }
+        $response = ["data" => "Order Updated"];
+      } catch (\Exception $e) {
+        $status = 500;
+        $response = ["errors" => $e->getMessage()];
+      }
+      return response()->json($response, $status ?? 200);
     }
 
     /**
