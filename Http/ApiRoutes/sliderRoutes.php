@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 
 $router->group(['prefix' => '/sliders'], function (Router $router) {
   $locale = \LaravelLocalization::setLocale() ?: \App::getLocale();
-  
+
   $router->post('/', [
     'as' => $locale . 'api.slider.sliders.create',
     'uses' => 'SliderApiController@create',
@@ -28,5 +28,11 @@ $router->group(['prefix' => '/sliders'], function (Router $router) {
     'as' => $locale . 'api.slider.sliders.show',
     'uses' => 'SliderApiController@show',
   ]);
-  
+
+  $router->post('/order-slides', [
+    'as' => $locale . 'api.slider.sliders.slide.update',
+    'uses' => 'SlideController@update',
+    'middleware' => ['auth:api']
+  ]);
+
 });
