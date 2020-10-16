@@ -45,7 +45,7 @@ class SlideApiTransformer extends Resource
         $data[$lang]['active'] = $this->hasTranslation($lang) ?
           $this->translate("$lang")['active'] ? 1 : 0 : '';
         $data[$lang]['customHtml'] = $this->hasTranslation($lang) ?
-          $this->translate("$lang")['customHtml'] ? $this->translate("$lang")['customHtml'] : '' : '';
+          ($this->translate("$lang")['custom_html'] ? $this->translate("$lang")['custom_html'] : '') : '';
       }
     }
 
