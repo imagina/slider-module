@@ -26,6 +26,7 @@ class Slider extends Model
 
   public function getOptionsAttribute($value)
   {
-    return json_decode($value);
+    if ($value) return json_decode($value);
+    else return [];
   }
 }

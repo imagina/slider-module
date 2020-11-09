@@ -15,7 +15,7 @@ class SliderApiTransformer extends Resource
       'systemName' => $this->system_name,
       'active' => $this->active ? 1 : 0,
       'createdAt' => $this->created_at,
-      'options' => $this->when($this->options, $this->options),
+      'options' => $this->options,
       'slides' => SlideApiTransformer::collection($this->slides),
     ];
   }
