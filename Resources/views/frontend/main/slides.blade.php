@@ -1,7 +1,7 @@
 @foreach($slider->slides as $index => $slide)
     @if($slide->active)
         <div class="carousel-item @if($index === 0) active @endif ">
-          <x-media-single-image :alt="$slide->title ?? setting::get('core::site-name')"
+          <x-media::single-image :alt="$slide->title ?? setting::get('core::site-name')"
                                 :title="$slide->title ?? setting::get('core::site-name')"
                                 :url="$slide->uri ?? null" :isMedia="true"
                                 imgClasses="d-block w-100"
