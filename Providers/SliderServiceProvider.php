@@ -1,5 +1,6 @@
 <?php namespace Modules\Slider\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Slider\Entities\Slider;
@@ -44,6 +45,9 @@ class SliderServiceProvider extends ServiceProvider
 
     $this->registerSliders();
     $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'slider');
+
+    $this->registerComponents();
+
   }
 
   /**
@@ -126,5 +130,13 @@ class SliderServiceProvider extends ServiceProvider
       return;
     }
   }
+
+    /**
+     * Register Blade components
+     */
+
+    private function registerComponents(){
+        Blade::componentNamespace("Modules\Slider\View\Components", 'slider');
+    }
 
 }

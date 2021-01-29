@@ -23,7 +23,8 @@ class SlideApiTransformer extends JsonResource
       'externalImageUrl' => $this->external_image_url,
       'target' => $this->target,
       'options' => $this->when($this->options, $this->options),
-      'imageUrl' => $this->getImageUrl()
+      'imageUrl' => $this->getImageUrl(),
+      'mediaFiles' => $this->mediaFiles(),
     ];
 
     $filter = json_decode($request->filter);
