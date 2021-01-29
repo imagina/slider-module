@@ -25,7 +25,7 @@ class EloquentSlideApiRepository extends EloquentBaseRepository implements Slide
 
     /*== FILTER ==*/
     if ($filter) {
-      //Filter by slug
+      //Filter by id
       if (isset($filter->sliderId)) {
         $query->where('slider_id', $filter->sliderId);
       }
@@ -57,59 +57,59 @@ class EloquentSlideApiRepository extends EloquentBaseRepository implements Slide
     /*=== REQUEST ===*/
     return $query->first();
   }
-  
+
   public function create($data)
   {
     $model = $this->model->create($data);
     event(new CreateMedia($model, (array)$data));
-    
+
     return $model;
   }
-  
-  
+
+
   public function deleteBy($criteria, $params = false)
     {
       /*== initialize query ==*/
       $query = $this->model->query();
-  
+
       /*== FILTER ==*/
       if (isset($params->filter)) {
         $filter = $params->filter;
-  
+
         if (isset($filter->field))//Where field
           $field = $filter->field;
       }
-  
+
       /*== REQUEST ==*/
       $model = $query->where($field ?? 'id', $criteria)->first();
       $model ? $model->delete() : false;
-  
+
       event(new DeleteMedia($model->id, get_class($model)));
     }
-    
-    
+
+
       public function updateBy($criteria, $data, $params = false)
         {
           /*== initialize query ==*/
           $query = $this->model->query();
-      
+
           /*== FILTER ==*/
           if (isset($params->filter)) {
             $filter = $params->filter;
-      
+
             //Update by field
             if (isset($filter->field))
               $field = $filter->field;
           }
-  
-          
+
+
           /*== REQUEST ==*/
           $model = $query->where($field ?? 'id', $criteria)->first();
           $model ? $model->update((array)$data) : false;
-  
+
           //Event to Update media
           event(new UpdateMedia($model,(array)$data));
           return $model ;
         }
-        
+
 }
