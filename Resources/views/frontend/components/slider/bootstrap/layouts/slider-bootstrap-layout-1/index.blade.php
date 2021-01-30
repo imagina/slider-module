@@ -3,9 +3,9 @@
      data-keyboard="{{ $keyboard }}" data-wrap="{{ $wrap }}" data-touch="{{ $touch }}"
      style="height: {{ $height }}">
     @if($dots)
-    <ol class="carousel-indicators">
+    <ol class="carousel-indicators carousel-indicators-position-{{ $dotsPosition }} carousel-indicators-style-{{ $dotsStyle }}">
         @foreach($slider->slides as $index => $slide)
-            <li data-target="#{{ $slider->system_name }}" data-slide-to="{{ $index }}" class="active"></li>
+            <li data-target="#{{ $slider->system_name }}" data-slide-to="{{ $index }}" @if($index === 0) class="active" @endif></li>
         @endforeach
     </ol>
     @endif

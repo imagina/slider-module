@@ -15,6 +15,8 @@ class Owl extends Component
     public $margin;
     public $loop;
     public $dots;
+    public $dotsPosition;
+    public $dotsStyle;
     public $nav;
     public $navText;
     public $autoplay;
@@ -27,14 +29,16 @@ class Owl extends Component
      * @return void
      */
     public function __construct($id, $layout = 'slider-owl-layout-1', $height = '500px', $autoplay = 'true', $margin = 0,
-                                $autoplayHoverPause = 'true', $loop = 'true', $dots = 'true', $nav = 'true', $navText = "",
-                                $autoplayTimeout = 5000)
+                                $autoplayHoverPause = 'true', $loop = 'true', $dots = 'true', $dotsPosition = 'center',
+                                $dotsStyle = 'line', $nav = 'true', $navText = "", $autoplayTimeout = 5000)
     {
         $this->id = $id;
         $this->layout = $layout ?? 'slider-owl-layout-1';
         $this->height = $height ?? '500px';
         $this->margin = $margin ?? 0;
         $this->dots = $dots ?? 'true';
+        $this->dotsPosition = $dotsPosition ?? 'center';
+        $this->dotsStyle = $dotsStyle ?? 'line';
         $this->nav = $nav ?? 'true';
         $this->navText = json_encode($navText);
         $this->loop = $loop ?? 'true';

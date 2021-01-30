@@ -13,6 +13,8 @@ class Bootstrap extends Component
     public $view;
     public $height;
     public $dots;
+    public $dotsPosition;
+    public $dotsStyle;
     public $arrows;
     public $interval;
     public $ride;
@@ -21,20 +23,24 @@ class Bootstrap extends Component
     public $wrap;
     public $touch;
 
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $layout = 'slider-bootstrap-layout-1', $height = '500px',
-                                $dots = true, $arrows = true, $ride = 'false', $pause = 'hover',
-                                $keyboard = 'true', $wrap = 'true', $touch = 'true', $interval = 5000)
+    public function __construct($id, $layout = 'slider-bootstrap-layout-1', $height = '500px', $dots = true,
+                                $dotsPosition = 'center', $dotsStyle = 'line', $arrows = true, $ride = 'false',
+                                $pause = 'hover', $keyboard = 'true', $wrap = 'true', $touch = 'true', $interval = 5000
+                                )
     {
         $this->id = $id;
         $this->layout = $layout ?? 'slider-bootstrap-layout-1';
         $this->height = $height ?? '500px';
         $this->arrows = $arrows ?? true;
         $this->dots = $dots ?? true;
+        $this->dotsPosition = $dotsPosition ?? 'center';
+        $this->dotsStyle = $dotsStyle ?? 'line';
         $this->interval = $interval ?? 5000;
         $this->ride = $ride ?? 'false';
         $this->pause = $pause ?? 'hover';
