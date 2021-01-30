@@ -1,4 +1,4 @@
-.slider-layout-1{
+.slider-component{
   .image-link{
     display: inline-block;
     height: 100%;
@@ -8,5 +8,28 @@
   }
   .carousel-caption{
     padding-top: 15%;
+    .title1, .custom-html {
+      text-shadow: 3px 2px 3px $gray-600;
+    }
+  }
+}
+.slider-component.owl-slider-layout-1{
+  .owl-stage-outer, .owl-stage, .owl-item{
+    height: 100% !important;
+  }
+  .owl-nav {
+    [class*=owl-]{
+      top: 45%!important;
+      span {
+        font-size: 4rem;
+        line-height: 0.5;
+      }
+    }
+    .owl-next {
+      right: 0 !important;
+    }
+    .owl-prev {
+      margin-left: 0 !important;
+    }
   }
 }

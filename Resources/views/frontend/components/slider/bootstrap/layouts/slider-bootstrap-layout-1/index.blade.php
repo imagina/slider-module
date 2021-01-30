@@ -1,4 +1,4 @@
-<div id="{{ $slider->system_name }}" class="carousel slide slider-layout-1"
+<div id="{{ $slider->system_name }}" class="carousel slide slider-component bootstrap-slider-layout-1"
      data-pause="{{ $pause }}" data-ride="{{ $ride }}" data-interval="{{ $interval }}"
      data-keyboard="{{ $keyboard }}" data-wrap="{{ $wrap }}" data-touch="{{ $touch }}"
      style="height: {{ $height }}">
@@ -29,7 +29,7 @@
                                 @endif
 
                                 @if(!empty($slide->custom_html))
-                                    <div class="custom_html d-none d-md-block">
+                                    <div class="custom-html d-none d-md-block">
                                         {!! $slide->custom_html !!}
                                     </div>
                                 @endif

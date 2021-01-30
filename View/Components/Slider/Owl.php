@@ -4,7 +4,7 @@
 namespace Modules\Slider\View\Components\Slider;
 use Illuminate\View\Component;
 
-class Bootstrap extends Component
+class Owl extends Component
 {
 
     public $id;
@@ -12,36 +12,38 @@ class Bootstrap extends Component
     public $slider;
     public $view;
     public $height;
+    public $margin;
+    public $loop;
     public $dots;
-    public $arrows;
-    public $interval;
-    public $ride;
-    public $pause;
-    public $keyboard;
-    public $wrap;
-    public $touch;
-
+    public $nav;
+    public $navText;
+    public $autoplay;
+    public $autoplayHoverPause;
+    public $autoplayTimeout;
+    public $containerFluid;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $layout = 'slider-bootstrap-layout-1', $height = '500px',
-                                $dots = true, $arrows = true, $ride = 'false', $pause = 'hover',
-                                $keyboard = 'true', $wrap = 'true', $touch = 'true', $interval = 5000)
+    public function __construct($id, $layout = 'slider-owl-layout-1', $height = '500px', $autoplay = 'true', $margin = 0,
+                                $autoplayHoverPause = 'true', $loop = 'true', $dots = 'true', $nav = 'true', $navText = "",
+                                $autoplayTimeout = 5000)
     {
         $this->id = $id;
-        $this->layout = $layout ?? 'slider-bootstrap-layout-1';
+        $this->layout = $layout ?? 'slider-owl-layout-1';
         $this->height = $height ?? '500px';
-        $this->arrows = $arrows ?? true;
-        $this->dots = $dots ?? true;
-        $this->interval = $interval ?? 5000;
-        $this->ride = $ride ?? 'false';
-        $this->pause = $pause ?? 'hover';
-        $this->keyboard = $keyboard ?? 'true';
-        $this->wrap = $wrap ?? 'true';
-        $this->touch = $touch ?? 'true';
-        $this->view = "slider::frontend.components.slider.bootstrap.layouts.{$this->layout}.index";
+        $this->margin = $margin ?? 0;
+        $this->dots = $dots ?? 'true';
+        $this->nav = $nav ?? 'true';
+        $this->navText = json_encode($navText);
+        $this->loop = $loop ?? 'true';
+        $this->autoplay = $autoplay;
+        $this->autoplayHoverPause = $autoplayHoverPause;
+        $this->autoplayTimeout = $autoplayTimeout;
+
+
+        $this->view = "slider::frontend.components.slider.owl.layouts.{$this->layout}.index";
 
         $this->getItem();
     }
