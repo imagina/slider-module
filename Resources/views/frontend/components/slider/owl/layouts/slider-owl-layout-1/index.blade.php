@@ -1,4 +1,4 @@
-<div id="{{ $slider->system_name }}" class="owl-carousel slider-component owl-theme owl-slider-layout-1{{ $dots ? ' mb-5': '' }}" style="height: {{ $height }}">
+<div id="{{ $slider->system_name }}" class="owl-carousel slider-component owl-theme owl-slider-layout-1{{ $dots ? ' owl-with-dots carousel-indicators-position-'.$dotsPosition.' carousel-indicators-style-'. $dotsStyle: '' }}" style="height: {{ $height }}">
     @foreach($slider->slides as $index => $slide)
         <div class="item h-100">
             <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
@@ -45,7 +45,7 @@
       nav: {{ $nav }},
       autoPlay: {{ $autoplay }},
       autoplayHoverPause: {{ $autoplayHoverPause }},
-      autoplayTimeout: {{ $autoplayTimeout }}
+      autoplayTimeout: {{ $autoplayTimeout }},
     });
   });
 </script>
