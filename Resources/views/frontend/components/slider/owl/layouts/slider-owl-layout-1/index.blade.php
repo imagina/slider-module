@@ -46,6 +46,7 @@
       autoPlay: {{ $autoplay }},
       autoplayHoverPause: {{ $autoplayHoverPause }},
       autoplayTimeout: {{ $autoplayTimeout }},
+      navText: ['',''],
     });
   });
 </script>

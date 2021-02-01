@@ -12,6 +12,34 @@
       text-shadow: 3px 2px 3px $gray-600;
     }
   }
+  .carousel-control-prev, .carousel-control-next {
+    opacity: 1;
+    z-index: 99;
+    width: 40px;
+    display: block;
+    top: 50%;
+    position: absolute;
+    right: auto;
+    left: 0;
+    height: 40px;
+    margin-top: -20px;
+    &.carousel-control-next{
+      right: 0!important;
+      left: auto!important;
+    }
+
+  }
+  .carousel-control-next-icon {
+    transform: rotate(180deg);
+  }
+
+  .carousel-control-prev-icon, .carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24.85 47.03'%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath fill='#{encodecolor($white)}' d='M3.6,23.37,24.4,2.57a1.29,1.29,0,0,0,.34-1.49A1.75,1.75,0,0,0,23.24,0a1.37,1.37,0,0,0-1,.44L.43,22.3a1.54,1.54,0,0,0,0,2.13L22.29,46.58a1.31,1.31,0,0,0,.95.45A1.76,1.76,0,0,0,24.73,46a1.33,1.33,0,0,0-.33-1.51Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    height: 40px;
+    &:hover {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24.85 47.03'%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath fill='#{encodecolor($primary)}' d='M3.6,23.37,24.4,2.57a1.29,1.29,0,0,0,.34-1.49A1.75,1.75,0,0,0,23.24,0a1.37,1.37,0,0,0-1,.44L.43,22.3a1.54,1.54,0,0,0,0,2.13L22.29,46.58a1.31,1.31,0,0,0,.95.45A1.76,1.76,0,0,0,24.73,46a1.33,1.33,0,0,0-.33-1.51Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+  }
   &.owl-with-dots{
     .owl-dots{
       position: absolute;
@@ -48,8 +76,8 @@
   }
   &.carousel-indicators-style-square, .carousel-indicators-style-square, &.carousel-indicators-style-circle, .carousel-indicators-style-circle{
     li,.owl-dots .owl-dot span{
-      width: 15px;
-      height: 15px;
+      width: 11px;
+      height: 11px;
       border-radius: 50%;
       margin: 5px;
       border: 2px solid $primary;
@@ -57,6 +85,11 @@
       position: relative;
       background-clip: border-box;
       opacity: 1;
+      flex: 0 1 auto;
+    }
+    .owl-dots .owl-dot span{
+      width: 15px;
+      height: 15px;
     }
     li.active, .owl-dots .owl-dot.active span{
       border: 2px solid #fff;
@@ -112,24 +145,28 @@
     height: 100% !important;
   }
   .owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    text-align: left;
+    margin-top: -20px;
     [class*=owl-]{
-      top: 45%!important;
-      span {
-        font-size: 6rem;
-        line-height: 0.5;
+      width: 40px;
+      height: 40px;
+      color: $white;
+      font-size: 4em;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24.85 47.03'%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath fill='#{encodecolor($white)}' d='M3.6,23.37,24.4,2.57a1.29,1.29,0,0,0,.34-1.49A1.75,1.75,0,0,0,23.24,0a1.37,1.37,0,0,0-1,.44L.43,22.3a1.54,1.54,0,0,0,0,2.13L22.29,46.58a1.31,1.31,0,0,0,.95.45A1.76,1.76,0,0,0,24.73,46a1.33,1.33,0,0,0-.33-1.51Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      padding: 0 5px;
+      &:hover {
+        color: $primary;
+        background-color: transparent;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24.85 47.03'%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath fill='#{encodecolor($primary)}' d='M3.6,23.37,24.4,2.57a1.29,1.29,0,0,0,.34-1.49A1.75,1.75,0,0,0,23.24,0a1.37,1.37,0,0,0-1,.44L.43,22.3a1.54,1.54,0,0,0,0,2.13L22.29,46.58a1.31,1.31,0,0,0,.95.45A1.76,1.76,0,0,0,24.73,46a1.33,1.33,0,0,0-.33-1.51Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
       }
     }
     .owl-next {
-      right: 0 !important;
-      span {
-        padding-right: 5px;
-      }
-    }
-    .owl-prev {
-      margin-left: 0 !important;
-      span {
-        padding-left: 5px;
-      }
+      float: right;
+      transform: rotate(180deg);
     }
   }
 }
