@@ -46,7 +46,7 @@
       autoPlay: {{ $autoplay }},
       autoplayHoverPause: {{ $autoplayHoverPause }},
       autoplayTimeout: {{ $autoplayTimeout }},
-      navText: ['',''],
+      navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
     });
   });
 </script>
