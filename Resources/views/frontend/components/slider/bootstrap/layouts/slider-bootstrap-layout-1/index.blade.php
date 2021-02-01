@@ -49,11 +49,11 @@
     @if($arrows)
         @if(count($slider->slides) > 1)
             <a class="carousel-control-prev" href="#{{$slider->system_name}}" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <i class="fa fa-angle-left"></i>
                 <span class="sr-only">Previous</span>
             </a>
             <a class="carousel-control-next" href="#{{$slider->system_name}}" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <i class="fa fa-angle-right"></i>
                 <span class="sr-only">Next</span>
             </a>
         @endif
