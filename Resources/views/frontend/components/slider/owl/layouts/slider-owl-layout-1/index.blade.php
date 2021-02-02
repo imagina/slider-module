@@ -43,7 +43,7 @@
       loop: {{ $loop ?? 'true' }},
       margin: {{ $margin }},
       nav: {{ $nav }},
-      autoPlay: {{ $autoplay }},
+      autoplay: {{ $autoplay }},
       autoplayHoverPause: {{ $autoplayHoverPause }},
       autoplayTimeout: {{ $autoplayTimeout }},
       navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
