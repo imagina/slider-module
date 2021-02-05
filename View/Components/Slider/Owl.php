@@ -28,23 +28,23 @@ class Owl extends Component
      *
      * @return void
      */
-    public function __construct($id, $layout = 'slider-owl-layout-1', $height = '500px', $autoplay = 'true', $margin = 0,
-                                $autoplayHoverPause = 'true', $loop = 'true', $dots = 'true', $dotsPosition = 'center',
-                                $dotsStyle = 'line', $nav = 'true', $navText = "", $autoplayTimeout = 5000)
+    public function __construct($id, $layout = 'slider-owl-layout-1', $height = '500px', $autoplay = true, $margin = 0,
+                                $autoplayHoverPause = true, $loop = true, $dots = true, $dotsPosition = 'center',
+                                $dotsStyle = 'line', $nav = true, $navText = "", $autoplayTimeout = 5000)
     {
         $this->id = $id;
         $this->layout = $layout ?? 'slider-owl-layout-1';
         $this->height = $height ?? '500px';
         $this->margin = $margin ?? 0;
-        $this->dots = $dots ?? 'true';
+        $this->dots = $dots ?? true;
         $this->dotsPosition = $dotsPosition ?? 'center';
         $this->dotsStyle = $dotsStyle ?? 'line';
-        $this->nav = $nav ?? 'true';
+        $this->nav = $nav ?? true;
         $this->navText = json_encode($navText);
-        $this->loop = $loop ?? 'true';
-        $this->autoplay = $autoplay;
-        $this->autoplayHoverPause = $autoplayHoverPause;
-        $this->autoplayTimeout = $autoplayTimeout;
+        $this->loop = $loop ?? true;
+        $this->autoplay = $autoplay ?? true;
+        $this->autoplayHoverPause = $autoplayHoverPause ?? true;
+        $this->autoplayTimeout = $autoplayTimeout ?? 5000;
 
 
         $this->view = "slider::frontend.components.slider.owl.layouts.{$this->layout}.index";
