@@ -30,8 +30,8 @@ class Bootstrap extends Component
      * @return void
      */
     public function __construct($id, $layout = 'slider-bootstrap-layout-1', $height = '500px', $dots = true,
-                                $dotsPosition = 'center', $dotsStyle = 'line', $arrows = true, $ride = 'false',
-                                $pause = 'hover', $keyboard = 'true', $wrap = 'true', $touch = 'true', $interval = 5000
+                                $dotsPosition = 'center', $dotsStyle = 'line', $arrows = true, $ride = false,
+                                $pause = 'hover', $keyboard = true, $wrap = true, $touch = true, $interval = 5000
                                 )
     {
         $this->id = $id;
@@ -42,11 +42,11 @@ class Bootstrap extends Component
         $this->dotsPosition = $dotsPosition ?? 'center';
         $this->dotsStyle = $dotsStyle ?? 'line';
         $this->interval = $interval ?? 5000;
-        $this->ride = $ride ?? 'false';
+        $this->ride = $ride ?? false;
         $this->pause = $pause ?? 'hover';
-        $this->keyboard = $keyboard ?? 'true';
-        $this->wrap = $wrap ?? 'true';
-        $this->touch = $touch ?? 'true';
+        $this->keyboard = $keyboard ?? true;
+        $this->wrap = $wrap ?? true;
+        $this->touch = $touch ?? true;
         $this->view = "slider::frontend.components.slider.bootstrap.layouts.{$this->layout}.index";
 
         $this->getItem();
