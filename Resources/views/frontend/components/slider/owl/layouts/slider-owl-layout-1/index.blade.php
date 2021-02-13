@@ -3,8 +3,8 @@
         <div class="item h-100">
             <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
                                    :title="$slide->title ?? Setting::get('core::site-name')"
-                                   :url="$slide->uri ?? null" :isMedia="true"
-                                   imgClasses="d-block h-100 position-absolute slider-img"
+                                   :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
+                                   imgClasses="d-block h-100 position-absolute slider-img__{{$imgObjectFit}}"
                                    width="100%"
                                    :mediaFiles="$slide->mediaFiles()" zone="slideimage" />
             @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
@@ -39,14 +39,14 @@
   $(function(){
     $('#{{ $slider->system_name }}').owlCarousel({
       items: 1,
-      dots: {{ $dots }},
-      loop: {{ $loop ?? 'true' }},
-      margin: {{ $margin }},
-      nav: {{ $nav }},
-      autoplay: {{ $autoplay }},
-      autoplayHoverPause: {{ $autoplayHoverPause }},
-      autoplayTimeout: {{ $autoplayTimeout }},
-      navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+      dots: {!! $dots ? 'true' : 'false' !!},
+      loop: {!! $loop ? 'true' : 'false' !!},
+      lazyLoad: true,
+      margin: {!! $margin !!},
+      nav: {!! $nav ? 'true' : 'false' !!},
+      autoplay: {!! $autoplay ? 'true' : 'false' !!},
+      autoplayHoverPause: {!! $autoplayHoverPause ? 'true' : 'false' !!},
+      {!! !empty($navText) ? 'navText: '.$navText."," : "" !!}
     });
   });
 </script>
