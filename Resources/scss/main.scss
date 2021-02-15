@@ -1,4 +1,7 @@
 .slider-component{
+  @include media-breakpoint-down(md) {
+    height: calc(100vw * (.3)) !important;
+  }
   .image-link{
     display: inline-block;
     height: 100%;
