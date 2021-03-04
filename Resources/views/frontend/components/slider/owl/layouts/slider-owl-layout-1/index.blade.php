@@ -1,10 +1,11 @@
-<div id="{{ $slider->system_name }}" class="owl-carousel slider-component owl-theme owl-slider-layout-1{{ $dots ? ' owl-with-dots carousel-indicators-position-'.$dotsPosition.' carousel-indicators-style-'. $dotsStyle: '' }}" style="height: {{ $height }}">
+<div id="{{ $slider->system_name }}"
+     class="owl-carousel slider-component owl-theme owl-slider-layout-1{{ $dots ? ' owl-with-dots carousel-indicators-position-'.$dotsPosition.' carousel-indicators-style-'. $dotsStyle: '' }}" style="max-height: {{ $height }}">
     @foreach($slider->slides as $index => $slide)
         <div class="item h-100">
             <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
                                    :title="$slide->title ?? Setting::get('core::site-name')"
                                    :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
-                                   imgClasses="d-block h-100 position-absolute slider-img__{{$imgObjectFit}}"
+                                   imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
                                    width="100%"
                                    :mediaFiles="$slide->mediaFiles()" zone="slideimage" />
             @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
