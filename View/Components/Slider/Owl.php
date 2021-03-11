@@ -23,6 +23,7 @@ class Owl extends Component
     public $autoplayHoverPause;
     public $autoplayTimeout;
     public $containerFluid;
+    public $imgObjectFit;
     /**
      * Create a new component instance.
      *
@@ -30,7 +31,7 @@ class Owl extends Component
      */
     public function __construct($id, $layout = 'slider-owl-layout-1', $height = '500px', $autoplay = true, $margin = 0,
                                 $autoplayHoverPause = true, $loop = true, $dots = true, $dotsPosition = 'center',
-                                $dotsStyle = 'line', $nav = true, $navText = "", $autoplayTimeout = 5000)
+                                $dotsStyle = 'line', $nav = true, $navText = "", $autoplayTimeout = 5000, $imgObjectFit="cover")
     {
         $this->id = $id;
         $this->layout = $layout ?? 'slider-owl-layout-1';
@@ -45,6 +46,7 @@ class Owl extends Component
         $this->autoplay = $autoplay ?? true;
         $this->autoplayHoverPause = $autoplayHoverPause ?? true;
         $this->autoplayTimeout = $autoplayTimeout ?? 5000;
+        $this->imgObjectFit = $imgObjectFit ?? "cover";
 
 
         $this->view = "slider::frontend.components.slider.owl.layouts.{$this->layout}.index";

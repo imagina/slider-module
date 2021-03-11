@@ -1,10 +1,21 @@
 .slider-component{
+  @include media-breakpoint-down(md) {
+    height: calc(100vw * (.3)) !important;
+  }
   .image-link{
     display: inline-block;
     height: 100%;
   }
   .slider-img{
-    object-fit: cover;
+    &__fill{
+      object-fit: fill;
+    }
+    &__cover{
+      object-fit: cover;
+    }
+    &__cotain{
+      object-fit: cover;
+    }
   }
   .carousel-caption{
     padding-top: 15%;
