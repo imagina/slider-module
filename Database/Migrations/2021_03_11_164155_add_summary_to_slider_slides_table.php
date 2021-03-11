@@ -13,8 +13,8 @@ class AddSummaryToSliderSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::table('slider_slides', function (Blueprint $table) {
-
+        Schema::table('slider__slide_translations', function (Blueprint $table) {
+            $table->text('summary')->nullable()->after('active');
         });
     }
 
@@ -25,8 +25,8 @@ class AddSummaryToSliderSlidesTable extends Migration
      */
     public function down()
     {
-        Schema::table('slider_slides', function (Blueprint $table) {
-
+        Schema::table('slider__slide_translations', function (Blueprint $table) {
+            $table->dropColumn('summary');
         });
     }
 }
