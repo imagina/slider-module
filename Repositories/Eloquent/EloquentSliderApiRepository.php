@@ -61,6 +61,10 @@ class EloquentSliderApiRepository extends EloquentBaseRepository implements Slid
       if (isset($filter->sliderId)) {
         $query->where('slider_id', $filter->sliderId);
       }
+      //Filter by slug
+      if (isset($filter->systemName)) {
+        $query->where('system_name', $filter->systemName);
+      }
     }
 
     /*== FIELDS ==*/

@@ -1,7 +1,4 @@
 .slider-component{
-  @include media-breakpoint-down(md) {
-    height: calc(100vw * (.3)) !important;
-  }
   .image-link{
     display: inline-block;
     height: 100%;
@@ -13,8 +10,8 @@
     &__cover{
       object-fit: cover;
     }
-    &__cotain{
-      object-fit: cover;
+    &__contain{
+      object-fit: contain;
     }
   }
   .carousel-caption{
