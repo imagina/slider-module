@@ -8,7 +8,7 @@
 
             @case("auto")
             @case("image")
-
+            <div class="item h-100">
             <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
                                    :title="$slide->title ?? Setting::get('core::site-name')"
                                    :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
             @endif
             @break
 
