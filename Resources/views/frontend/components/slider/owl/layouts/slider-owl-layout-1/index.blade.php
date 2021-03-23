@@ -5,52 +5,48 @@
 
         @switch($slide->type)
 
+            @case("video")
+                <div class="item h-100">
+                    <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
+                            frameborder="0" allowfullscreen></iframe>
+                </div>
+            @break
+            @default
+                <div class="item h-100">
+                    <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
+                                           :title="$slide->title ?? Setting::get('core::site-name')"
+                                           :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
+                                           imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
+                                           width="100%"
+                                           :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
+                    @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
+                        <div class="carousel-caption px-o pb-0 d-none d-md-block h-100">
+                            <div class="container h-100">
+                                <div class="row h-100 justify-content-center">
+                                    <div class="col-10 text-center">
 
-            @case("auto")
-            @case("image")
-            <div class="item h-100">
-            <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
-                                   :title="$slide->title ?? Setting::get('core::site-name')"
-                                   :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
-                                   imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
-                                   width="100%"
-                                   :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
-            @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
-                <div class="carousel-caption px-o pb-0 d-none d-md-block h-100">
-                    <div class="container h-100">
-                        <div class="row h-100 justify-content-center">
-                            <div class="col-10 text-center">
+                                        @if(!empty($slide->title))
+                                            <h1 class="title1 mb-2 h1"><b>{{$slide->title}}</b></h1>
+                                        @endif
 
-                                @if(!empty($slide->title))
-                                    <h1 class="title1 mb-2 h1"><b>{{$slide->title}}</b></h1>
-                                @endif
+                                        @if(!empty($slide->custom_html))
+                                            <div class="custom-html d-none d-md-block">
+                                                {!! $slide->custom_html !!}
+                                            </div>
+                                        @endif
 
-                                @if(!empty($slide->custom_html))
-                                    <div class="custom-html d-none d-md-block">
-                                        {!! $slide->custom_html !!}
+                                        <div class="d-block">
+                                            <a class="btn btn-primary"
+                                               href="{{ $slide->url ?? $slide->uri }}">{{ $slide->caption ?? trans('isite::common.menu.viewMore') }}</a>
+                                        </div>
+
                                     </div>
-                                @endif
-
-                                <div class="d-block">
-                                    <a class="btn btn-primary"
-                                       href="{{ $slide->url ?? $slide->uri }}">{{ $slide->caption ?? trans('isite::common.menu.viewMore') }}</a>
                                 </div>
-
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
-            </div>
-            @endif
             @break
-
-            @case("video")
-            <div class="item h-100">
-                <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
-                        frameborder="0" allowfullscreen></iframe>
-            </div>
-            @break
-
         @endswitch
     @endforeach
 </div>
