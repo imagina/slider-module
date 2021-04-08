@@ -60,6 +60,7 @@
       margin: {!! $margin !!},
       nav: {!! $nav ? 'true' : 'false' !!},
       autoplay: {!! $autoplay ? 'true' : 'false' !!},
+      autoplayTimeout: {!! $autoplayTimeout ?? 5000 !!},
       autoplayHoverPause: {!! $autoplayHoverPause ? 'true' : 'false' !!},
         {!! !empty($navText) ? 'navText: '.$navText."," : "" !!}
     });
