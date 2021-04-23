@@ -12,12 +12,21 @@
     <div class="carousel-inner h-100">
         @foreach($slider->slides as $index => $slide)
             <div class="carousel-item @if($index === 0) active @endif h-100">
+                @if($slide->mediaFiles()->slideimage->isVideo)
+                    <video class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
+                        <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
+                    </video>
+                @elseif($slide->mediaFiles()->slideimage->isImage)
                 <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
                                        :title="$slide->title ?? Setting::get('core::site-name')"
-                                       :url="$slide->uri ?? null" :isMedia="true"
-                                       imgClasses="d-block h-100 position-absolute slider-img"
+                                           :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
+                                           imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
                                        width="100%"
                                        :mediaFiles="$slide->mediaFiles()" zone="slideimage" />
+                @else
+                    <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
+                            frameborder="0" allowfullscreen></iframe>
+                @endif
                 @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
                 <div class="carousel-caption px-o pb-0 d-none d-md-block h-100">
                     <div class="container h-100">

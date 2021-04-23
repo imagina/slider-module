@@ -22,6 +22,7 @@ class Bootstrap extends Component
     public $keyboard;
     public $wrap;
     public $touch;
+    public $backgroundImg;
 
 
     /**
@@ -31,8 +32,8 @@ class Bootstrap extends Component
      */
     public function __construct($id, $layout = 'slider-bootstrap-layout-1', $height = '500px', $dots = true,
                                 $dotsPosition = 'center', $dotsStyle = 'line', $arrows = true, $ride = false,
-                                $pause = 'hover', $keyboard = true, $wrap = true, $touch = true, $interval = 5000
-                                )
+                                $pause = 'hover', $keyboard = true, $wrap = true, $touch = true, $interval = 5000,
+                                $backgroundImg = '' )
     {
         $this->id = $id;
         $this->layout = $layout ?? 'slider-bootstrap-layout-1';
@@ -48,6 +49,7 @@ class Bootstrap extends Component
         $this->wrap = $wrap ?? true;
         $this->touch = $touch ?? true;
         $this->view = "slider::frontend.components.slider.bootstrap.layouts.{$this->layout}.index";
+        $this->backgroundImg = $backgroundImg;
 
         $this->getItem();
     }

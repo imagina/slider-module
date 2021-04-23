@@ -24,6 +24,9 @@ class Owl extends Component
     public $autoplayTimeout;
     public $containerFluid;
     public $imgObjectFit;
+    public $responsive;
+    public $responsiveClass;
+    public $orderClasses;
     /**
      * Create a new component instance.
      *
@@ -31,7 +34,8 @@ class Owl extends Component
      */
     public function __construct($id, $layout = 'slider-owl-layout-1', $height = '500px', $autoplay = true, $margin = 0,
                                 $autoplayHoverPause = true, $loop = true, $dots = true, $dotsPosition = 'center',
-                                $dotsStyle = 'line', $nav = true, $navText = "", $autoplayTimeout = 5000, $imgObjectFit="cover")
+                                $dotsStyle = 'line', $nav = true, $navText = "", $autoplayTimeout = 5000, $imgObjectFit="cover",
+                                $responsiveClass = false, $responsive = null, $orderClasses = [])
     {
         $this->id = $id;
         $this->layout = $layout ?? 'slider-owl-layout-1';
@@ -47,6 +51,9 @@ class Owl extends Component
         $this->autoplayHoverPause = $autoplayHoverPause ?? true;
         $this->autoplayTimeout = $autoplayTimeout ?? 5000;
         $this->imgObjectFit = $imgObjectFit ?? "cover";
+        $this->responsive = json_encode($responsive ?? [0 => ["items" =>  1]]);
+        $this->responsiveClass = $responsiveClass;
+        $this->orderClasses = !empty($orderClasses) ? $orderClasses : ["photo" => "order-0", "content" => "order-1"];
 
 
         $this->view = "slider::frontend.components.slider.owl.layouts.{$this->layout}.index";

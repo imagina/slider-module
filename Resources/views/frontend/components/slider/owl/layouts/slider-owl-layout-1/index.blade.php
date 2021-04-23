@@ -7,18 +7,33 @@
 
             @case("video")
                 <div class="item h-100">
+                    @if($slide->mediaFiles()->slideimage->isVideo)
+                        <video class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
+                            <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
+                        </video>
+                    @else
                     <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
                             frameborder="0" allowfullscreen></iframe>
+                    @endif
                 </div>
             @break
             @default
                 <div class="item h-100">
+                    @if($slide->mediaFiles()->slideimage->isVideo)
+                        <video class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
+                            <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
+                        </video>
+                    @elseif($slide->mediaFiles()->slideimage->isImage)
                     <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
                                            :title="$slide->title ?? Setting::get('core::site-name')"
                                            :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
                                            imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
                                            width="100%"
                                            :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
+                    @else
+                        <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
+                                frameborder="0" allowfullscreen></iframe>
+                    @endif
                     @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
                         <div class="carousel-caption px-o pb-0 d-none d-md-block h-100">
                             <div class="container h-100">
@@ -50,8 +65,10 @@
         @endswitch
     @endforeach
 </div>
+@section('scripts-owl')
+  @parent
 <script>
-  $(function () {
+  $(document).ready(function () {
     $('#{{ $slider->system_name }}').owlCarousel({
       items: 1,
       dots: {!! $dots ? 'true' : 'false' !!},
@@ -60,8 +77,10 @@
       margin: {!! $margin !!},
       nav: {!! $nav ? 'true' : 'false' !!},
       autoplay: {!! $autoplay ? 'true' : 'false' !!},
+      autoplayTimeout: {!! $autoplayTimeout ?? 5000 !!},
       autoplayHoverPause: {!! $autoplayHoverPause ? 'true' : 'false' !!},
         {!! !empty($navText) ? 'navText: '.$navText."," : "" !!}
     });
   });
 </script>
+@stop
