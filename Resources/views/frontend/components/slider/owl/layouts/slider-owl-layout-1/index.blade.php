@@ -12,7 +12,7 @@
                             <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
                         </video>
                     @else
-                    <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
+                        <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
                             frameborder="0" allowfullscreen></iframe>
                     @endif
                 </div>
@@ -24,7 +24,7 @@
                             <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
                         </video>
                     @elseif($slide->mediaFiles()->slideimage->isImage)
-                    <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
+                        <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
                                            :title="$slide->title ?? Setting::get('core::site-name')"
                                            :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
                                            imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
