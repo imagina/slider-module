@@ -1,15 +1,27 @@
 <div id="{{ $slider->system_name }}"
-     class="owl-carousel owl-theme owl-slider-layout-2 {{ $dots ? ' owl-with-dots carousel-indicators-position-'.$dotsPosition.' carousel-indicators-style-'. $dotsStyle: '' }}">
+     style="max-height: {{ $height }}"
+     class="owl-carousel slider-component owl-theme owl-slider-layout-2 {{ $dots ? ' owl-with-dots carousel-indicators-position-'.$dotsPosition.' carousel-indicators-style-'. $dotsStyle: '' }}">
     @foreach($slider->slides as $index => $slide)
         <div class="card border-0">
             <div class="row no-gutters">
                 <div class="col-lg-6 ">
                     <div class="h-100 position-relative">
-                        <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
-                                               :title="$slide->title ?? Setting::get('core::site-name')"
-                                               :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
-                                               imgClasses="cover-img slider-img__{{$imgObjectFit}}"
-                                               :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
+                        @if($slide->mediaFiles()->slideimage->isVideo)
+                            <video style="min-height: {{ $height }}" class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
+                                <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
+                            </video>
+                        @elseif($slide->mediaFiles()->slideimage->isImage)
+                            <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
+                                                   :title="$slide->title ?? Setting::get('core::site-name')"
+                                                   :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
+                                                   imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
+                                                   width="100%"
+                                                   imgStyles="min-height: {{ $height }}"
+                                                   :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
+                        @else
+                            <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
+                                    frameborder="0" allowfullscreen></iframe>
+                        @endif
                     </div>
                 </div>
 

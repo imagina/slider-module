@@ -8,7 +8,7 @@
             @case("video")
                 <div class="item h-100">
                     @if($slide->mediaFiles()->slideimage->isVideo)
-                        <video class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
+                        <video style="max-height: {{ $height }}" class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
                             <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
                         </video>
                     @else
@@ -20,7 +20,7 @@
             @default
                 <div class="item h-100">
                     @if($slide->mediaFiles()->slideimage->isVideo)
-                        <video class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
+                        <video style="max-height: {{ $height }}"  class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
                             <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
                         </video>
                     @elseif($slide->mediaFiles()->slideimage->isImage)
