@@ -7,7 +7,7 @@
                 <div class="col-lg-6 ">
                     <div class="h-100 position-relative">
                         @if($slide->mediaFiles()->slideimage->isVideo)
-                            <video style="min-height: {{ $height }}" class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
+                            <video style="min-height: {{ $height }};max-height: {{ $height }}" class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
                                 <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
                             </video>
                         @elseif($slide->mediaFiles()->slideimage->isImage)
@@ -16,7 +16,7 @@
                                                    :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
                                                    imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
                                                    width="100%"
-                                                   imgStyles="min-height: {{ $height }}"
+                                                   imgStyles="min-height: {{ $height }};max-height: {{ $height }}"
                                                    :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
                         @else
                             <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"

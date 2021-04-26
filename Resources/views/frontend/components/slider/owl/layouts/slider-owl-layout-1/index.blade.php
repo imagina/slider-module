@@ -8,7 +8,7 @@
             @case("video")
                 <div class="item h-100">
                     @if($slide->mediaFiles()->slideimage->isVideo)
-                        <video style="max-height: {{ $height }}" class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
+                        <video style="min-height: {{ $height }};max-height: {{ $height }}" class="d-block h-100 slider-img__{{$imgObjectFit}}" width="100%" loop autoplay muted>
                             <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
                         </video>
                     @else
@@ -28,8 +28,8 @@
                                            :title="$slide->title ?? Setting::get('core::site-name')"
                                            :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
                                            imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
-                                           imgStyles="min-height: {{ $height }}"
                                            width="100%"
+                                           imgStyles="min-height: {{ $height }};max-height: {{ $height }}"
                                            :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
                     @else
                         <iframe class="full-height" width="100%" height="{{$height}}" src="{{ $slide->getLinkUrl() }}"
