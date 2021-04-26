@@ -28,6 +28,7 @@
                                            :title="$slide->title ?? Setting::get('core::site-name')"
                                            :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
                                            imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
+                                           imgStyles="min-height: {{ $height }}"
                                            width="100%"
                                            :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
                     @else
