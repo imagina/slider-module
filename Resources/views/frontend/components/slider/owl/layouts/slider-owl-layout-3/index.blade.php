@@ -3,12 +3,21 @@
     @foreach($slider->slides as $index => $slide)
         <div class="card-owl">
             <div class="bg-image">
-                <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
-                                   :title="$slide->title ?? Setting::get('core::site-name')"
-                                   :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
-                                   imgClasses="h-100 d-block  slider-img__{{$imgObjectFit}}"
-                                   width="100%"
-                                   :mediaFiles="$slide->mediaFiles()" zone="slideimage" />
+                @if($slide->mediaFiles()->slideimage->isVideo)
+                    <video width="100%" class="d-block h-10 w-100 slider-img__{{$imgObjectFit}}" loop autoplay muted>
+                        <source src="{{ $slide->mediaFiles()->slideimage->path }}" />
+                    </video>
+                @elseif($slide->mediaFiles()->slideimage->isImage)
+                    <x-media::single-image :alt="$slide->title ?? Setting::get('core::site-name')"
+                                           :title="$slide->title ?? Setting::get('core::site-name')"
+                                           :url="$slide->uri ?? $slide->url ?? null" :isMedia="true"
+                                           imgClasses="d-block h-100 slider-img__{{$imgObjectFit}}"
+                                           width="100%"
+                                           :mediaFiles="$slide->mediaFiles()" zone="slideimage"/>
+                @else
+                    <iframe width="100%" class="full-height" src="{{ $slide->getLinkUrl() }}"
+                            frameborder="0" allowfullscreen></iframe>
+                @endif
             </div>
             @if(!empty($slide->title) || !empty($slide->caption) || !empty($slide->custom_html))
             <div class="card-owl-body">
