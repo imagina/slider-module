@@ -18,6 +18,7 @@ class Slide extends Model
     'url',
     'active',
     'custom_html',
+    'summary',
   ];
 
   protected $fillable = [
@@ -33,7 +34,6 @@ class Slide extends Model
     'active',
     'external_image_url',
     'custom_html',
-    'summary',
     'options'
   ];
   protected $table = 'slider__slides';
